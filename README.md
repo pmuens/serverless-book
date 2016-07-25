@@ -6,7 +6,7 @@ Book about the serverless.com framework
 
 - [Introduction](#introduction)
 - [The serverless architecture](#the-serverless-architecture)
-- [The serverless framework](#the-serverless-framework)
+- [The Serverless framework](#the-serverless-framework)
 - [Terminologies](#terminologies)
 - [Your first Serverless service](#your-first-serverless-service)
   - [Creatig a service](#creating-a-service)
