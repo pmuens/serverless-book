@@ -74,7 +74,9 @@ The [Serverless framework](http://serverless.com) gives you the choice which of 
 
 If you're familiar with it you can even integrate the provider of your choice into the framework. We'll see later on how this will work.
 
-Excited about the Serverless architecture? Let's what the Serverless framework is and how it can help us to deploy our code onto the cloud providers infrastructure of our choice.
+Excited about the Serverless architecture?
+
+Let's what the [Serverless framework](http://serverless.com) is and how it can help us to deploy our code onto the cloud providers infrastructure of our choice.
 
 ## The Serverless framework
 
