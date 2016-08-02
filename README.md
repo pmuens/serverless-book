@@ -102,7 +102,7 @@ Let's what the [Serverless framework](http://serverless.com) is and how it can h
 
 ### AWS
 
-Amazon Web Services. Amazons business which offers different cloud services (see [Amazon AWS homepage](http://aws.amazon.com) for more details.
+Amazon Web Services. Amazons business which offers different cloud services (see [Amazon AWS homepage](http://aws.amazon.com)) for more details.
 
 ### FaaS
 
