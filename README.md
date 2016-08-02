@@ -76,7 +76,7 @@ If you're familiar with it you can even integrate the provider of your choice in
 
 Excited about the Serverless architecture?
 
-Let's what the [Serverless framework](http://serverless.com) is and how it can help us to deploy our code onto the cloud providers infrastructure of our choice.
+Let's what the [Serverless framework](http://serverless.com) is and how it can help us to deploy our code into the cloud providers infrastructure of our choice.
 
 ## The Serverless framework
 
