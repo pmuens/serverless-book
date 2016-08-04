@@ -149,7 +149,7 @@ Function as a service. Functions are independently deployed and run on a fully m
 
 ### HTTP
 
-Hypertext transfer protocol. Protocol to transfer hypermedia information. Read more on [wikipedia](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol) about it.
+Hypertext transfer protocol. Protocol to transfer hypermedia information.
 
 ### Resource
 
