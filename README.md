@@ -82,11 +82,11 @@ Let's what the [Serverless framework](http://serverless.com) is and how it can h
 
 With this knowledge in mind we can talk about the Serverless framework.
 
-The Serverless framework (previously known as JAWS) is a Node.js based CLI which makes it easy for you to manage and deploy your Serverless applications regardless of the cloud provider you have chosen.
+The [Serverless framework](https://github.com/serverless/serverless) (previously known as JAWS) is a Node.js based [CLI](#cli) which makes it easy for you to manage and deploy your Serverless applications regardless of the cloud provider you have chosen.
 
-It's not rare that you have dozens of functions that access other (provider specific) services such as storage buckets, database tables or even external APIs. You can of course deploy each and every function by hand. But as your application evolves and you code get's more complicated it's a pain to orchestrate everything.
+It's not rare that you have dozens of functions that access other (provider specific) services such as storage buckets, database tables or even external [APIs](#api). You can of course deploy each and every function by hand. But as your application evolves and you code get's more complicated it's a pain to orchestrate everything.
 
-Serverless makes it easy to organize all the relevant resources your application needs in order to run. Functions are automatically deployed and events are compiled into the syntax the cloud provider understands. You can e.g. add a `http` event to your function and Serverless will create a corresponding API Gateway endpoint when you use AWS or a HTTP trigger if you've decided to upload your code to the Google Cloud.
+Serverless makes it easy to organize all the relevant resources your application needs in order to run. Functions are automatically deployed and events are compiled into the syntax the cloud provider understands. You can e.g. add a `http` event to your function and Serverless will create a corresponding API Gateway endpoint when you use [AWS](#aws) or a [HTTP](#http) trigger if you've decided to upload your code to the Google Cloud.
 
 Additionally you can still setup your own, custom provider specific resources with the help of the `resources` section in the `serverless.yml` file (but we'll come to that later, so no worry if you don't understand it yet).
 
@@ -126,13 +126,25 @@ Everything the Serverless framework does can be done manually. But this would wo
 
 ## Terminologies
 
+### API
+
+Application programming interface. Set of rules on how to interact with a application.
+
 ### AWS
 
 Amazon Web Services. Amazons business which offers different cloud services (see [Amazon AWS homepage](http://aws.amazon.com)) for more details.
 
+### CLI
+
+Command-line interface. A way to interact with the computer through e.g. the console.
+
 ### FaaS
 
 Function as a service. Functions are independently deployed and run on a fully managed cloud system. The developer simply uploads the code of the function and the cloud provider takes care of the rest.
+
+### HTTP
+
+Hypertext transfer protocol. Protocol to transfer hypermedia information. Read more on [wikipedia](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol) about it.
 
 ### Resource
 
