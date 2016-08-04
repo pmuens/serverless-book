@@ -8,7 +8,7 @@ Book about the serverless.com framework
 - [The serverless architecture](#the-serverless-architecture)
 - [The Serverless framework](#the-serverless-framework)
 - [Installing Serverless](#installing-serverless)
-  - [Installing Node.js](#installing-node-js)
+  - [Installing Node.js](#installing-nodejs)
   - [Installing the Serverless CLI](#installing-the-serverless-cli)
 - [Cloud provider setup](#cloud-provider-setup)
   - [Amazon Web Services (AWS)](#amazon-web-services-aws)
