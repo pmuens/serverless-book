@@ -7,6 +7,11 @@ Book about the serverless.com framework
 - [Introduction](#introduction)
 - [The serverless architecture](#the-serverless-architecture)
 - [The Serverless framework](#the-serverless-framework)
+- [Installing Serverless](#installing-serverless)
+  - [Installing Node.js](#installing-node-js)
+  - [Installing the Serverless CLI](#installing-the-serverless-cli)
+- [Cloud provider setup](#cloud-provider-setup)
+  - [Amazon Web Services (AWS)](#amazon-web-services-aws)
 - [Your first Serverless service](#your-first-serverless-service)
   - [Creatig a service](#creating-a-service)
   - [What is serverless.yml](#what-is-serverless-yml)
@@ -100,7 +105,7 @@ Everything the Serverless framework does can be done manually. But this would wo
 
 ### Installing Node.js
 
-### Installing the Serverless npm package
+### Installing the Serverless CLI
 
 ## Cloud provider setup
 
