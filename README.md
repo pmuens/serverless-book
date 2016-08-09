@@ -14,7 +14,7 @@ Book about the serverless.com framework
   - [Amazon Web Services (AWS)](#amazon-web-services-aws)
     - [Creating an AWS account](#creating-an-aws-account)
     - [Configuring AWS](#configuring-aws)
-    - [Setting the AWS API Key & Secret](#setting-the-aws-api--key-secret)
+    - [Setting the AWS API Key & Secret](#setting-the-aws-api-key--secret)
 - [Your first Serverless service](#your-first-serverless-service)
   - [Creatig a service](#creating-a-service)
   - [What is serverless.yml](#what-is-serverless-yml)
