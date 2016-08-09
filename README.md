@@ -180,7 +180,7 @@ At first you should download and isntall the AWS CLI. You can read how to do thi
 
 After you've done this you need to run
 
-```aws-configure```
+```aws configure```
 
 To start the AWS CLI configuartion wizard. Follow this wizard and enter the corresponding `AWS Access Key ID` and `AWS Secret Access Key`.
 
