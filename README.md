@@ -1,6 +1,6 @@
-# Serverless Book
+# The Serverless Book
 
-Book about the serverless.com framework
+A Book about the [serverless.com](http://serverless.com) framework.
 
 ## Table of contents
 
