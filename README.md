@@ -14,6 +14,7 @@ Book about the serverless.com framework
   - [Amazon Web Services (AWS)](#amazon-web-services-aws)
     - [Creating an AWS account](#creating-an-aws-account)
     - [Configuring AWS](#configuring-aws)
+    - [Setting the AWS API Key & Secret](#setting-the-aws-api-key-secret)
 - [Your first Serverless service](#your-first-serverless-service)
   - [Creatig a service](#creating-a-service)
   - [What is serverless.yml](#what-is-serverless-yml)
@@ -170,6 +171,20 @@ The next thing we need to do is to create an AWS user which has **administrative
 Done. We've now created an *serverless-admin* user which can do stuff in our AWS account on our behalf (thanks to the **Administrator Access** policy).
 
 **Note:** This setup is not that safe for production environments as it gives the *serverless-admin* user full access to the AWS account. If you deploy your app in a production environment you should definitely reduce the rights for this user.
+
+#### Setting the AWS API Key & Secret
+
+Serverless needs access to the `AWS Access Key ID` and `AWS Secret Access Key` so that it can work with the previously created AWS user.
+
+At first you should download and isntall the AWS CLI. You can read how to do this [here](http://docs.aws.amazon.com/cli/latest/userguide/installing.html).
+
+After you've done this you need to run
+
+```aws-configure```
+
+To start the AWS CLI configuartion wizard. Follow this wizard and enter the corresponding `AWS Access Key ID` and `AWS Secret Access Key`.
+
+Once done Serverless is able to use those keys and work with the help of the *serverless-admin* user.
 
 ## Your first Serverless service
 
