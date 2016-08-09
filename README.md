@@ -12,6 +12,8 @@ Book about the serverless.com framework
   - [Installing the Serverless CLI](#installing-the-serverless-cli)
 - [Cloud provider setup](#cloud-provider-setup)
   - [Amazon Web Services (AWS)](#amazon-web-services-aws)
+    - [Creating an AWS account](#creating-an-aws-account)
+    - [Configuring AWS](#configuring-aws)
 - [Your first Serverless service](#your-first-serverless-service)
   - [Creatig a service](#creating-a-service)
   - [What is serverless.yml](#what-is-serverless-yml)
@@ -141,7 +143,33 @@ That's it. We can now move forward and setup the cloud provider of our choice to
 
 ## Cloud provider setup
 
+In this chapter we'll setup the cloud provider of our choice so that we can use it for our upcoming, first Serverless service.
+
 ### Amazon Web Services (AWS)
+
+#### Creating an AWS account
+
+At first you need to create an AWS account (if you haven't already). You can do this on their [signup page](https://aws.amazon.com/free/).
+
+#### Configuring AWS
+
+The next thing we need to do is to create an AWS user which has **administrative access** to your account:
+
+1. Login to your AWS account
+2. Go to the **Identity & Access Management (IAM)** page
+3. Click on **Users**
+4. Click on **Create New Users**
+5. Enter *serverless-admin* and click **Create**
+6. Click on **Download Credentials** to download the .csv file with the AWS credentials
+7. Click **Users** on the left
+8. Click on the *serverless-admin* user
+9. Go to the **Permissions** tab
+10. Click **Attach Policy** and select the **Administrator Access**
+11. Click on **Attach Policy**
+
+Done. We've now created an *serverless-admin* user which can do stuff in our AWS account on our behalf (thanks to the **Administrator Access** policy).
+
+**Note:** This setup is not that safe for production environments as it gives the *serverless-admin* user full access to the AWS account. If you deploy your app in a production environment you should definitely reduce the rights for this user.
 
 ## Your first Serverless service
 
