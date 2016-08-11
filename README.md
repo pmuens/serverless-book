@@ -18,7 +18,6 @@ A Book about the [serverless.com](http://serverless.com) framework.
 - [Your first Serverless service](#your-first-serverless-service)
   - [Creatig a service](#creating-a-service)
   - [What is serverless.yml](#what-is-serverless-yml)
-  - [What is serverless.env.yml](#what-is-serverless-env-yml)
   - [Deploying a service](#deploying-a-service)
   - [Invoking a function](#invoking-a-function)
   - [Updating function code](#updating-function-code)
