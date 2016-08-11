@@ -1,4 +1,4 @@
-# The Serverless Book
+# :zap: The Serverless Book
 
 A Book about the [serverless.com](http://serverless.com) framework.
 
