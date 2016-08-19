@@ -23,6 +23,9 @@ A Book about the [serverless.com](http://serverless.com) framework.
   - [Updating function code](#updating-function-code)
   - [Redeploying the service](#redeploying-the-service)
   - [Removing a service](#removing-a-service)
+- [Serverless by example](#serverless-by-example)
+  - [Building a web app](#building-a-web-app)
+  - [Building a data processing pipeline](#building-a-data-processing-pipeline)
 - [Terminologies](#terminologies)
   - [FaaS](#faas)
   - [Resource](#resource)
@@ -288,6 +291,20 @@ Just run:
 ```serverless remove```
 
 to remove the whole service from the cloud providers infrastructure. :dancers:
+
+## Serverless by example
+
+Now that we've seen how easy it is to create, deploy and manage our own Serverless service we'd like to dig deeper into the world of the Serverless framework and build real world, event driven applications.
+
+These chapters are meant to show you the full power of Serverless. We'll build example applications for different  use cases. This way you'll see that the Serverless framework is a great tool to achieve different goals / work in different environments. The different things you can build with Serverless are endless and only restricted by imagination.
+
+Let's start with our very first application!
+
+### Building a web app
+
+Our first application is a web application. We'll create a simple note taking application in JavaScript / Node.js and deploy it to AWS. Excited and ready? Let's go!
+
+### Building a data processing pipeline
 
 ## Terminologies
 
