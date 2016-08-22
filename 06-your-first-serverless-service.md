@@ -42,7 +42,7 @@ If you want to get a deeper knowledge what else you can do with this file you sh
 
 But don't feel intimidated for now. We'll take a deep dive into it later on!
 
-## Deplyoing a service
+## Deploying a service
 
 Now that we've created our service we want to deploy it to our cloud provider.
 
