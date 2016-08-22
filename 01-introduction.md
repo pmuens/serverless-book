@@ -11,7 +11,7 @@ We'll start this book by looking into the serverless architecture in general. Qu
 
 After that we talk about the Serverless framework. What is the motivation of the Serverless framework, why was it developed and how does it work?
 
-With this foundation we'll create a first Serverless [service](#service). This service will live through the whole, usual service lifecycle. We'll create it, deploy it, invoke a function from it, update the functions code, redeploy it and remove it. Furthermore we'll look into the configuration files of the Serverless framework to see how we can simply extend our service with e.g. other event sources (such as HTTP).
+With this foundation we'll create a first Serverless [service](xx-terminologies.md#service). This service will live through the whole, usual service lifecycle. We'll create it, deploy it, invoke a function from it, update the functions code, redeploy it and remove it. Furthermore we'll look into the configuration files of the Serverless framework to see how we can simply extend our service with e.g. other event sources (such as HTTP).
 
 **UPDATE CONTENT HERE**
 
