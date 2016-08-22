@@ -1,6 +1,6 @@
 # Installing Serverless
 
-Let's dive directly into serverless and the Serverless framework. In order to do so we need to install [Node.js](http://nodejs.org) (as Serverless is a Node.js [CLI](#cli)) and the after that the Serverless CLI. This chapter will show us how we can accomplish this.
+Let's dive directly into serverless and the Serverless framework. In order to do so we need to install [Node.js](http://nodejs.org) (as Serverless is a Node.js [CLI](xx-terminologies.md#cli)) and the after that the Serverless CLI. This chapter will show us how we can accomplish this.
 
 ## Installing Node.js
 
@@ -18,7 +18,7 @@ This should show you the installed Node.js version which should be greater than 
 
 ## Installing the Serverless CLI
 
-Next up we can use [npm](#npm) (the Node package manager which was installed alongside [Node.js](http://nodejs.org)) to install Serverless.
+Next up we can use [npm](xx-terminologies.md#npm) (the Node package manager which was installed alongside [Node.js](http://nodejs.org)) to install Serverless.
 
 Open up a terminal and enter
 
