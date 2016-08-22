@@ -5,7 +5,7 @@ My name is [Philipp](http://github.com/pmuens). I work at [Serverless](http://se
 
 Feel free to write me an E-Mail or hit me on Twitter if you have any questions!
 
-In this book we'll discover the Serverless framework. It's a very powerful, yet easy to use developer tool to build modern, monstrously scalable web applications with the help of [FaaS](#faas) (function as a service) offerings from the cloud provider of your choice.
+In this book we'll discover the Serverless framework. It's a very powerful, yet easy to use developer tool to build modern, monstrously scalable web applications with the help of [FaaS](xx-terminologies.md#faas) (function as a service) offerings from the cloud provider of your choice.
 
 We'll start this book by looking into the serverless architecture in general. Questions like "What is the serverless architecture?", "Why does it make software development easier?" or "Why should I care and jump on the Serverless train?" will be answered in this chapter.
 
