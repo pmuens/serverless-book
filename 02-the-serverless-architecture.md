@@ -14,13 +14,13 @@ No server setup, update or failover management, no scaling issues, no nothing. J
 
 The introduction of AWS Lambda in 2014 made this dream come true.
 
-AWS takes care of everything that needs to be managed in order to run your Lambda code smoothly. Updates, security patches, scalability. Everything is done by [AWS](#aws) for you.
+AWS takes care of everything that needs to be managed in order to run your Lambda code smoothly. Updates, security patches, scalability. Everything is done by [AWS](xx-terminologies.md#aws) for you.
 
 You just have to care about your code.
 
 This coins the idea of a serverless environment: "You don't have to think about servers“. Best of all. Your code will smoothly when you have 2 users and will also do if you have 2 million users. Additionally you only pay for the time your code runs. This will cut down costs dramatically.
 
-However AWS is not the only cloud provider which offers this "Function as a Service" ([FaaS](#faas)) service.
+However AWS is not the only cloud provider which offers this "Function as a Service" ([FaaS](xx-terminologies.md#faas)) service.
 
 Microsoft has introduced ["Azure functions"](https://azure.microsoft.com/services/functions/), Google is working on ["Google Cloud functions"](https://cloud.google.com/functions/) and IBM has just introduced ["OpenWhisk"](https://developer.ibm.com/openwhisk/).
 
