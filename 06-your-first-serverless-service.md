@@ -11,7 +11,7 @@ You may have heard about the term ["Microservice"](https://en.wikipedia.org/wiki
 
 ## Creating a service
 
-Let's create our first service which should run on [AWS](#aws) and uses Node.js / JavaScript as the runtime.
+Let's create our first service which should run on [AWS](xx-terminologies.md#aws) and uses Node.js / JavaScript as the runtime.
 
 Serverless creates service scaffolds for us based on templates. You can see all the available templates [here](https://github.com/serverless/serverless/tree/master/lib/plugins/create/templates).
 
