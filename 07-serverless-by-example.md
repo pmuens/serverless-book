@@ -10,6 +10,37 @@ Let's start with our very first application!
 
 ## Building a web app
 
-Our first application is a web application. We'll create a simple note taking application in JavaScript / Node.js and deploy it to AWS. Excited and ready? Let's go!
+Our first application is a web application. We'll create a simple todo application in JavaScript / Node.js and deploy it to AWS. Excited and ready? Let's go!
+
+### What we'll build
+
+Before we dive right into code we shoud sketch out briefly what we're about to build here and what the final application will look like.
+
+First of all we need to distinguish between the frontend (the stuff the user will see) and the backend (the business logic which is hidden from the user). We'll create both, but will focus on the backend part here as its the one which is powered by Serverless at the end of the day. Our Serverless backend application will act as an [API](xx-terminologies.md#api) you can talk to via [http](xx-terminologies.md#http). This makes it possible that you can switch out the frontend later on or develop an additional iOS or Android application which will interact through the HTTP interface.
+
+Don't worry if it sounds abstract right now. We'll see the benefits later on when we're done.
+
+What kind of functionality should our application offer?
+We should be able to:
+
+- View all our todos in a list
+- Create todos
+- Read todo
+- Update previously created todos
+- Delete todos
+
+That's basically it. The functionality which is describes here is often refered to as a [CRUD](xx-terminologies.md#crud) implementation which means "Create", "Read", "Update", "Delete".
+
+Ok. Now that we've defined how our application will look like we want to start with our first part: The backend.
+
+### Creating a Serverless `todos` service
+
+Our backend is (obviously) powered by Serverless. Let's create a todo service by running
+
+```serverless create --template aws-nodejs --path todos```
+
+We've chosen the `aws-nodejs` template as we're about to develop our backend in Node.js / JavaScript. Furthermore we've provided the `--path` option which will create a `todos` directory for us and name the service `todos` for us.
+
+Next up we need to open the `todos` directory with the editor of our choice.
 
 ## Building a data processing pipeline
