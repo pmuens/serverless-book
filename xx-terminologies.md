@@ -12,6 +12,10 @@ Amazon Web Services. Amazons business which offers different cloud services (see
 
 Command-line interface. A way to interact with the computer through e.g. the console.
 
+## CRUD
+
+Abbreviation for **C**reate, **R**ead, **U**pdate and **D**elete. The basic builidung blocks one needs when working with data.
+
 ## FaaS
 
 Function as a service. Functions are independently deployed and run on a fully managed cloud system. The developer simply uploads the code of the function and the cloud provider takes care of the rest.
