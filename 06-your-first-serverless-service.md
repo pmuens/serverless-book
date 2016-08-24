@@ -17,19 +17,16 @@ Serverless creates service scaffolds for us based on templates. You can see all 
 
 Behind the scenes it simply copies over the files from the corresponding template directory on our hard drive. That's it.
 
-At first we should create a new directory for our new service so that Serverless can copy over the files into it:
-
-```mkdir my-new-service && cd my-new-service```
-
 We'll pick the `aws-nodejs` template and enter:
 
-```serverless create --template aws-nodejs```
+```serverless create --template aws-nodejs --path my-first-service```
 
-That's it. We should see a success message that Serverless has successfully created our service scaffold.
+That's it. We should see a success message that Serverless has successfully created our service scaffold in the `my-first-service` directory.
 
 ## What is serverless.yml
 
 Let's look into the files Serverless has created for us.
+
 Next to some other files you see the `serverless.yml` file. This file is a description of your service. Serverless uses this file to understand what your service resources are and how to set them up for you.
 
 When you e.g. want to add a new event (such as an HTTP endpoint) you'll edit this file and re-deploy your service.
