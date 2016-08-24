@@ -25,5 +25,7 @@ A Book about the [serverless.com](http://serverless.com) framework. Covers Serve
   - [Removing a service](06-your-first-serverless-service.md#removing-a-service)
 - [Serverless by example](07-serverless-by-example.md)
   - [Building a web app](07-serverless-by-example.md#building-a-web-app)
+    - [What we'll build](07-serverless-by-example.md#what-well-build)
+    - [What we'll build](07-serverless-by-example.md#creating-a-serverless-todos-service)
   - [Building a data processing pipeline](07-serverless-by-example.md#building-a-data-processing-pipeline)
 - [Terminologies](xx-terminologies.md)
