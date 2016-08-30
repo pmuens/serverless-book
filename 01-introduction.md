@@ -11,8 +11,8 @@ With this foundation we'll create a first Serverless [service](xx-terminologies.
 
 **UPDATE CONTENT HERE**
 
-**Note:** Do you have any questions? Want to improve this book? Don't hesitate to open up an issue or create a corresponding pull request!
+**Questions / Feedback**: Do you have any questions? Want to improve this book? Don't hesitate to open up an issue or create a corresponding pull request!
 
-This book is a complete overhaul / rewrite of the ["Learn Serverless"](https://justserverless.github.io/learnserverless-book) book which coveres v0.5.
+**Note:** This book is a complete overhaul / rewrite of the ["Learn Serverless"](https://justserverless.github.io/learnserverless-book) book which covered v0.5.
 
 Great to have you aboard! Let's take a deep dive into Serverless!
