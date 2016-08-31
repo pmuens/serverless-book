@@ -43,4 +43,8 @@ We've chosen the `aws-nodejs` template as we're about to develop our backend in 
 
 Next up we need to open the `todos` directory with the editor of our choice.
 
+### Creating todos
+
+The first thing we want to build is a way to add new todos to our application so that we can show, edit and remove them later on.
+
 ## Building a data processing pipeline
