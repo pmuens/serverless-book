@@ -28,6 +28,10 @@ Hypertext transfer protocol. Protocol to transfer hypermedia information.
 
 Node package manager which makes it easier to share encapsulated code between [Node.js](http://nodejs.org) applications.
 
+## RDBMS
+
+Relational database system. Data is stored in a relational way which yields to less data fragmentation, but (debatable :evil:) data retrievals. 
+
 ## Resource
 
 Way of grouping logic (e.g. users, posts, ...).
