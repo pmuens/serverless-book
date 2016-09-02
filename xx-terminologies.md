@@ -24,13 +24,17 @@ Function as a service. Functions are independently deployed and run on a fully m
 
 Hypertext transfer protocol. Protocol to transfer hypermedia information.
 
+## NoSQL
+
+Not only / Non SQL / No relational database system. Data is stored in other ways such as documents or key, value stores. Those databases were developed to deal with the huge amount of data we store nowadays. While data retrieval might be tricky they shine when it comes down to reads, writes and throughput. Furthermore data might be stored redundant in multiple places.
+
 ## npm
 
 Node package manager which makes it easier to share encapsulated code between [Node.js](http://nodejs.org) applications.
 
 ## RDBMS
 
-Relational database system. Data is stored in a relational way which yields to less data fragmentation, but (debatable :evil:) data retrievals. 
+Relational database system. Data is stored in a relational way which yields to less data redundance, but (debatable :japanese_ogre:) data retrievals. 
 
 ## Resource
 
