@@ -34,7 +34,7 @@ Node package manager which makes it easier to share encapsulated code between [N
 
 ## RDBMS
 
-Relational database system. Data is stored in a relational way which yields to less data redundance, but (debatable :japanese_ogre:) data retrievals. 
+Relational database system. Data is stored in a relational way which yields to less data redundance, but (debatable :japanese_ogre:) slower data retrievals. 
 
 ## Resource
 
