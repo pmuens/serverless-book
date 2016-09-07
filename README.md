@@ -27,5 +27,6 @@ A Book about the [serverless.com](http://serverless.com) framework. Covers Serve
   - [Building a web app](07-serverless-by-example.md#building-a-web-app)
     - [What we'll build](07-serverless-by-example.md#what-well-build)
     - [Creating a Serverless todos service](07-serverless-by-example.md#creating-a-serverless-todos-service)
+    - [Creating todos](07-serverless-by-example.md#creating-todos)
   - [Building a data processing pipeline](07-serverless-by-example.md#building-a-data-processing-pipeline)
 - [Terminologies](xx-terminologies.md)
