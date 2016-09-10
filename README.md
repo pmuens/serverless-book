@@ -17,7 +17,7 @@ A Book about the [serverless.com](http://serverless.com) framework that covers S
 - [The serverless architecture](03-the-serverless-architecture)
 - [Setup](04-setup)
   - [Installing Serverless](04-setup/01-installing-serverless.md)
-  - [Installing Serverless](04-setup/02-cloud-provider-setup.md)
+  - [Cloud provider setup](04-setup/02-cloud-provider-setup.md)
 - [The Serverless framework](05-the-serverless-framework)
 - [Serverless by example](06-serverless-by-example)
   - [Your first Serverless service](06-serverless-by-example/01-your-first-serverless-service.md)
