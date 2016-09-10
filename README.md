@@ -8,7 +8,7 @@ A Book about the [serverless.com](http://serverless.com) framework that covers S
 - [AWS fundamentals](02-aws-fundamentals)
   - [What is AWS?](02-aws-fundamentals/01-what-is-aws.md)
   - [What is IAM?](02-aws-fundamentals/02-what-is-iam.md)
-  - [What is Lambda?](02-aws-fundamentals/03-what-os-lambda.md)
+  - [What is Lambda?](02-aws-fundamentals/03-what-is-lambda.md)
   - [What is CloudFormation?](02-aws-fundamentals/04-what-is-cloudformation.md)
   - [What is API Gateway?](02-aws-fundamentals/05-what-is-api-gateway.md)
   - [What is S3?](02-aws-fundamentals/06-what-is-s3.md)
