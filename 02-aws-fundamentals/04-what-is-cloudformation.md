@@ -1,14 +1,14 @@
 # What is CloudFormation?
 
-Back in the starting days of AWS you would login to your AWS account and configure everything by hand. You'll create the necessary resources like S3 buckets, policies and users / roles and orchestrate them.
+Back in the starting days of AWS you would login to the web console of your AWS account and configure everything by hand. You'll create the necessary resources your application would use (like e.g. Lambda functions, S3 buckets, DynamoDB tables, policies, roles, etc.) and orchestrate them.
 
-The problem with this approach is that nothing is (obviously) automated. You are not able to share and recreate an infrastructure from scratch without spending a huge amount of time configuring everything.
+The problem with this approach is that nothing is (obviously) automated and reproducable. You are not able to share and recreate an infrastructure from scratch without spending a huge amount of time configuring everything manually.
 
 [CloudFormation](https://aws.amazon.com/cloudformation/) was invented by Amazon to circumvent this limitations.
 
 ## How does it look like?
 
-You've already seen a simple example in the S3 section above. Here's the example again in case you can't remember:
+You've already seen a simple example before! Here's the example again in case you can't remember:
 
 ```json
 {
@@ -16,12 +16,12 @@ You've already seen a simple example in the S3 section above. Here's the example
    "Statement": {
     "Effect": "Allow",
     "Action": "s3:ListBucket",
-    "Resource": "arn:aws:s3:::example_bucket"
+    "Resource": "arn:aws:s3:::example"
   }
 }
 ```
 
-The CloudFormation templates are defined with the help of JSON. This makes it easy, accessible and understandable if you have experiences with JSON in general. It also makes it very easy to interact with the templates in your favorite programming language.
+The CloudFormation templates are defined with the help of JSON. This makes it easy, accessible and understandable if you have experiences with JSON in general.
 
 If you have no experience with JSON you could use the [AWS CloudFormation designer](https://console.aws.amazon.com/cloudformation/designer/home) to design your templates in your browser. The designer generates the JSON which you can then use for further processing.
 
@@ -29,4 +29,6 @@ If you have no experience with JSON you could use the [AWS CloudFormation design
 
 ## How Serverless uses CloudFormation
 
-Serverless is a heavy user of CloudFormation templates. Nearly everything AWS related is defined with the help of CloudFormation. Some of those templates a generated automatically. You can always define new ones on your own. Those are then recognized and execute by Serverless.
+Serverless is a heavy user of CloudFormation. Nearly every resource Serverless uses is defined and deployed with the help of CloudFormation.
+
+Even your event definitions in your `serverless.yml` (which we'll see later on) file are compiled to valid CloudFormation syntax which is merged into the main "Serverless CloudFormation" template and then deployed.
