@@ -1,6 +1,6 @@
 # Cloud provider setup
 
-In this chapter we'll setup the cloud provider of our choice so that we can use it for our upcoming, first Serverless service.
+In this chapter we'll Amazon Web Services so that we have everything in place to work on our first Serverless applications.
 
 ## Creating an AWS account
 
