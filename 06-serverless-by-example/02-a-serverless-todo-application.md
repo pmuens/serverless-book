@@ -10,6 +10,10 @@ Let's start with our very first application!
 
 Our first application is a web application. We'll create a simple todo application in JavaScript / Node.js and deploy it to AWS. Excited and ready? Let's go!
 
+## The code
+
+The whole code we'll write is available in the [todo code directory](/xx-code/todos). Just open up this directory to follow along or read through it if you face any problems.
+
 ## Aside: Data storage and DynamoDB
 
 Before we get right into coding I'd like to talk about data persistence. One recommendation we have for our todo application is that the data we enter there is stored in a database. You might have heard about databases such as [MySQL](https://www.mysql.com/) or [PostgreSQL](https://www.postgresql.org/) which are so called [RDBMS](/xx-terminologies/01-terminologies.md#rdbms) or "relational databases". AWS, our cloud provider of choice offers hosted versions of those databases.
@@ -110,6 +114,164 @@ provider:
 
 This way Serverless knows that it needs to setup permissions for your Lambda function so that they can e.g. `Query` the table or perform the `DeleteItem` operation on DynamoDB tables in the `us-east-1` region.
 
+## Deploying the first time
+
+Let's check if everything works as expected and verify that our DynamoDB database gets created.
+
+Run
+
+```bash
+serverless deploy
+```
+
+in the root of the service directory. After that login to your AWS account and navigate to the `DynamoDB` section in the `us-east-1` region. You should now see a DynamoDB table with the name `todos`.
+
+Great! We've now setup everything so that we can store, access and manipulate our todos into the DynamoDB database.
+
+## Creating a `package.json` file
+
+Next up we need to create a `package.json` file because we're about to use some npm packages to e.g. create unique `ids` for our todo items in our Lambda functions.
+
+Create a new file called `package.json` in the root of your servie with the following content:
+
+```json
+{
+  "name": "todos",
+  "version": "0.1.0",
+  "description": "Todo service built with Serverless",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.5.5",
+    "uuid": "^2.0.2"
+  }
+}
+```
+
+You can see that we've added two packages here.
+
+THe firs one is [`aws-sdk`](https://www.npmjs.com/package/aws-sdk) which gives us access to work with AWS services (this is not necessary as Lambda functions automatically have access to the SDKs in the corresponding runtime language).
+
+Additionally we've added the [`uuid`](https://www.npmjs.com/package/uuid) package which will help us generate unique ids we can use as our `id` attribute for our todos.
+
+Next up run
+
+```bash
+npm install
+```
+
+so that the packages are installed inside our service directory.
+
+You can add any npm package you'd like to use in your Lambda functions here. Servereless will consider those packages when it zips the service and uploads it to S3.
+
 ## Creating todos
 
-The first thing we want to build is a way to add new todos to our application so that we can show, edit and remove them later on.
+Let's write our first Lambda function so that we can submit our todo over HTTP and then store it in our database.
+
+We'll implement the create functionality in a 3 step process.
+
+### 1. Updating the `serverless.yml` file
+
+The first thing we'll need to do is to add a new function definition for our `create` functionality in our `serverelss.yml` file.
+
+Open up the `serverelss.yml` file and add the following code to the `functions` section (You can remove the function definition Serverelss has automatically created for you):
+
+```yml
+functions:
+  create:
+    handler: handler.create
+    events:
+      - http: POST todos
+```
+
+Here we'll tell Serverelss that we want to create a new function called `create`. The handler which is the kind of starting point for the function points to the exported `create` function of the `handler.js` file (`handler: handler.create`).
+
+Our function will have one event definition it responds to (`http`). Serverelss will create a new API Gateway endpoint which will react on `POST` requests which are sent to the `/todos` path.
+
+### 2. Addin the create logic
+
+Next up we need to add the logic which will insert our new todo into the database. Create a new file called `todos-create.js` in the root of the service with the following content:
+
+```javascript
+'use strict';
+
+const AWS = require('aws-sdk');
+const dynamoDb = new AWS.DynamoDB.DocumentClient();
+const uuid = require('uuid');
+
+module.exports = (event, callback) => {
+  const data = event.body;
+
+  data.id = uuid.v1();
+  data.updatedAt = new Date().getTime();
+
+  const params = {
+    TableName: 'todos',
+    Item: data
+  };
+
+  return dynamoDb.put(params, function (error, data) {
+    if (error) {
+      callback(error);
+    } else {
+      callback(error, params.Item);
+    }
+  });
+};
+```
+
+The code works as follows. At first we'll require all the necessary packages we need. We'll require the AWS SDK, create a new DyanmoDB instance with the help of the AWS SDK and require the `uuid` package so that we can generate unique ids.
+
+After that we export a function which can receive an `event` and a `callback` function.
+
+Inside of this function we'll get the data of the todo we're about to create from the `event` parameter (The data such as the HTTP POST body where the information about the todos is stored will be passed from API Gateway down to the Lambda function and is accessible there).
+
+We then make a DynamoDB call and store the new todo in our `todos` table. At the end we call the `callback` and return either the successfully created todo or an error.
+
+### 3. Updating the `handler.js` file
+
+The last thing we need to do is to update our `handler.js` file. This file is used as a orchestration / organization layer so that AWS can associate the correct pieces of code with the corresponding Lambda function (which we've already defined in the `serverless.yml` file). Furthermore it helps us with the separation of function logic. You'll soon see why it's better to separate the code into different concerns.
+
+Open up the `handler.js` file. remove the `module.exports` definition Serverless has created for us as a starting point.
+Then require the function code we've written previously by writing this piece of code at the top of the file:
+
+```javascript
+const todosCreate = require('./todos-create.js');
+```
+
+Next up add an export `create` statement like this to wire up the handler with the actual function logic:
+
+```javascript
+module.exports.create = (event, context, callback) => {
+  todosCreate(event, (error, response) => {
+    context.done(error, response);
+  });
+};
+```
+
+### Deploying and creating our first todo
+
+Let's test-flight our todo creation functionality.
+
+At first we need to deploy the code. Run
+
+```bash
+serverless deploy
+```
+
+So that Serverless will zip up our previously written code, creates an API Gateway endpoint based on the `http` event definition we've added to the `serverless.yml` file and sets up everything.
+
+After the deployment succeeds you'll see the created entpoint in the terminal.
+
+Run the following CURL command to create the first todo:
+
+```bash
+curl -H "Content-Type: application/json" -X POST -d '{ "body" : "My first todo" }' <your-endpoint-url>
+```
+
+The response will be the newly added todo!
+
+Awesome! :dancers: You've just created your first todo with the help of your new Serverless todos service! :tada:
