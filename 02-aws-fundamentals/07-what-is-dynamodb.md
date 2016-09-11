@@ -2,10 +2,10 @@
 
 [DynamoDB](https://aws.amazon.com/dynamodb/) is a NoSQL database service with nearly infinite scalability and flexibility.
 
-NoSQL means that you don't have to specify a schema which declares what kind of data you store (like you would do when you use a relational database). You simply create a table which should hold your data and store the data.
+[NoSQL](/xx-terminologies/01-terminologies.md#nosql) means that you don't have to specify a schema which declares what kind of data you store (like you would do when you use a relational database).
 
-With DynamoDB you can store key-value or document based data inside those tables.
+DynamoDB can be operated in different setups. You could for example use DynamoDB to store your data in key-value pairs. We'll use the document setup which means that we'll store JSON objects in our database.
 
 ## How Serverless uses DynamoDB
 
-DynamoDB is not used per default in Serverless. However we'll use DynamoDB in upcoming projects as our main database.
+DynamoDB is "just another AWS service" we'll use throughout this book to store data in a database. It's absolutely not a must to use DynamoDB so that the Serverless framework works.
