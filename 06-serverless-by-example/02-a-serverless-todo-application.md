@@ -605,3 +605,55 @@ delete:
 ```
 
 Here we define that Serverless should create a new Lambda function with the name `delete`. The `delete` function logic is exported in the `handler.js` file. Furthermore the `http` event adds an endpoint. The delete Lambda function is triggered when we access the `todos/{id}` path with the `DELETE` method.
+
+### 2. Implementing the `delete` logic
+
+Next up we create a `todos-delete.js` file in the root of the service directory and add the following code:
+
+```javascript
+'use strict';
+
+const AWS = require('aws-sdk');
+const dynamoDb = new AWS.DynamoDB.DocumentClient();
+
+module.exports = (event, callback) => {
+  const params = {
+    TableName : 'todos',
+    Key: {
+      id: event.path.id
+    }
+  };
+
+  return dynamoDb.delete(params, function (error, data) {
+    if (error) {
+      callback(error);
+    } else {
+      callback(error, params.Key);
+    }
+  });
+};
+```
+
+We import the `aws-sdk` at the top and create a new DynamoDB instance. After that we export a function which will receive the `event` and the `callback` argument from the Lambda function. Next up we extract the todo `id` from the `event` (which will take the `id` from the URL) and perform a `delete` operation on the DynamoDB database which will delete the corresponding todo item based on the todos `id` attribute.
+
+The `id` of the removed todo or an error is returned (if something goes wrong) with the help of the callback function.
+
+### 3. Updating the `handler.js` file
+
+The last step is to import the function logic at the top of the `handler.js` file:
+
+```javascript
+const todosDelete = require('./todos-delete.js');
+```
+
+and then add a new function export at the bottom of the `handler.js` file so that Lambda knows how to use the recently added `delete` functionality:
+
+```javascript
+module.exports.delete = (event, context, callback) => {
+  todosDelete(event, (error, response) => {
+    context.done(error, response);
+  });
+};
+```
+
+That's it. Now we should be able to delete todo items!
