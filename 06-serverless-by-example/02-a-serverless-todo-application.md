@@ -469,7 +469,7 @@ module.exports.readOne = (event, context, callback) => {
 };
 ```
 
-### Deploying a retrieving a todo
+### Deploying and retrieving a todo
 
 Run
 
