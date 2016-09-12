@@ -782,4 +782,8 @@ to re-deploy the service. Great! Now CORS is setup and we can use our frontend t
 
 ## Adding a frontend
 
+Let's connect a frontend with our backend so that we can manage our todos with our web browser instead of submitting CURL requests on our terminal (which is not that sexy...).
+
+This book focuses on Serverless so we won't go into implementation details of frontend code here. However you can read through the whole code in the [frontend code directory](/xx-code/todos/frontend). You'll also find setup information on how to use and run those frontends.
+
 ## What's next?
