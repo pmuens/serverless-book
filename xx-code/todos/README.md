@@ -4,8 +4,6 @@
   <img src="todos-1.gif?raw=true" alt="Todos demo"/>
 </p>
 
-# Todos
-
 This is the source code of the Serverless `Todos` service.
 
 You'll find two directories here.
