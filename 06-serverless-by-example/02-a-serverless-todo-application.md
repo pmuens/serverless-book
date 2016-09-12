@@ -33,7 +33,7 @@ Our first application is a web application. We'll create a simple todo applicati
 
 ## The code
 
-The whole code we'll write is available in the [todo code directory](/xx-code/todos). Just open up this directory to follow along or read through it if you face any problems.
+The whole code we'll write is available in the ["todo" code directory](/xx-code/todos). Just open up this directory to follow along or read through it if you face any problems.
 
 ## Aside: Data storage and DynamoDB
 
