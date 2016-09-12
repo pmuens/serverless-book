@@ -1,7 +1,7 @@
 # Introduction
 Hello and welcome to the Serverless book!
 
-In this book we'll discover the [Serverless framework](http://serverless.com). It's a very powerful, yet easy to use developer tool to build modern, monstrously scalable (web) applications with the help of [FaaS](xx-terminologies/01-terminologies.md#faas) (Function as a Service) offerings from the cloud provider of your choice.
+In this book we'll discover the [Serverless framework](http://serverless.com). It's a very powerful, yet easy to use developer tool to build modern, monstrously scalable (web) applications with the help of [FaaS](xx-glossary/01-glossary.md#faas) (Function as a Service) offerings from the cloud provider of your choice.
 
 We'll use Amazon Web Services (AWS) as our cloud provider throughout this book. However Serverless has multi provider support so you can built the applications we're buildung here on other cloud provider infrstructures as well (if your cloud provider has similar service / event offerings).
 
@@ -13,7 +13,7 @@ Next up we'll setup everything on our local machine so that we can use in combin
 
 An introduction to the [Serverless framework](http://serverless.com) follows next. What is the motivation of the Serverless framework, why was it developed and how does it work?
 
-After that we'll start with our first Serverless [service](xx-terminologies/01-terminologies.md#service) to understand how the framework works. A deep dive into different application examples will give us more insight and learnings on how we can built modern, monstrously scalabe, event driven applications.
+After that we'll start with our first Serverless [service](xx-glossary/01-glossary.md#service) to understand how the framework works. A deep dive into different application examples will give us more insight and learnings on how we can built modern, monstrously scalabe, event driven applications.
 
 **Questions / Feedback**: Do you have any questions? Want to improve this book? Don't hesitate to open up an issue or create a corresponding pull request!
 
