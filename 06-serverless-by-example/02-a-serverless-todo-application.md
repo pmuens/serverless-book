@@ -657,3 +657,25 @@ module.exports.delete = (event, context, callback) => {
 ```
 
 That's it. Now we should be able to delete todo items!
+
+### Deploying and deleting a todo
+
+Let's deploy and test our new functionality!
+
+Run
+
+```bash
+serverless deploy
+```
+
+to re-deploy the service. You should see a new `DELETE` endpoint once the deployment is done.
+
+Copy this url and replace `{id}` with a valid todo `id`.
+
+Next up run
+
+```bash
+curl -X DELETE <your-endpoint-url>
+```
+
+to delete a todo. The `id` of the deleted todo item will de returned and displayed on the terminal.
