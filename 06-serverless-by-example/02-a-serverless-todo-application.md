@@ -45,7 +45,9 @@ Don't be intimidated if you've not worked with DynamoDB or other database system
 
 ## What we'll build
 
-![Todos demo](/xx-code/todos/todos-1.gif)
+<p align="center">
+  <img src="/xx-code/todos/todos-1.gif?raw=true" alt="Todos demo"/>
+</p>
 
 Before we dive right into code we shoud sketch out briefly what we're about to build here and what the final application will look like.
 
