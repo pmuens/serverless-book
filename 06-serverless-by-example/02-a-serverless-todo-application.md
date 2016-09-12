@@ -37,9 +37,9 @@ The whole code we'll write is available in the [todo code directory](/xx-code/to
 
 ## Aside: Data storage and DynamoDB
 
-Before we get right into coding I'd like to talk about data persistence. One recommendation we have for our todo application is that the data we enter there is stored in a database. You might have heard about databases such as [MySQL](https://www.mysql.com/) or [PostgreSQL](https://www.postgresql.org/) which are so called [RDBMS](/xx-terminologies/01-terminologies.md#rdbms) or "relational databases". AWS, our cloud provider of choice offers hosted versions of those databases.
+Before we get right into coding I'd like to talk about data persistence. One recommendation we have for our todo application is that the data we enter there is stored in a database. You might have heard about databases such as [MySQL](https://www.mysql.com/) or [PostgreSQL](https://www.postgresql.org/) which are so called [RDBMS](/xx-glossary/01-glossary.md#rdbms) or "relational databases". AWS, our cloud provider of choice offers hosted versions of those databases.
 
-However AWS also runs their own database system called [DynamoDB](https://aws.amazon.com/dynamodb/) which is a so called schemaless / [NoSQL](/xx-terminologies/01-terminologies.md#nosql) database. We'll use [DynamoDB](https://aws.amazon.com/dynamodb/) in our application as it scales pretty easy, is rock solid (Amazon runs their own marketplace atop of it) and fits well into the Serverless world.
+However AWS also runs their own database system called [DynamoDB](https://aws.amazon.com/dynamodb/) which is a so called schemaless / [NoSQL](/xx-glossary/01-glossary.md#nosql) database. We'll use [DynamoDB](https://aws.amazon.com/dynamodb/) in our application as it scales pretty easy, is rock solid (Amazon runs their own marketplace atop of it) and fits well into the Serverless world.
 
 Don't be intimidated if you've not worked with DynamoDB or other database systems in the past. It's pretty simple and easy to use. I'll promise! :smiley:
 
@@ -51,7 +51,7 @@ Don't be intimidated if you've not worked with DynamoDB or other database system
 
 Before we dive right into code we shoud sketch out briefly what we're about to build here and what the final application will look like.
 
-First of all we need to distinguish between the frontend (the stuff the user will see) and the backend (the business logic which is hidden from the user). We'll create both, but will focus on the backend part here as its the one which is powered by Serverless at the end of the day. Our Serverless backend application will act as an [API](/xx-terminologies/01-terminologies.md#api) you can talk to via [http](/xx-terminologies/01-terminologies.md#http). This makes it possible that you can switch out the frontend later on or develop an additional iOS or Android application which will interact through the HTTP interface.
+First of all we need to distinguish between the frontend (the stuff the user will see) and the backend (the business logic which is hidden from the user). We'll create both, but will focus on the backend part here as its the one which is powered by Serverless at the end of the day. Our Serverless backend application will act as an [API](/xx-glossary/01-glossary.md#api) you can talk to via [http](/xx-glossary/01-glossary.md#http). This makes it possible that you can switch out the frontend later on or develop an additional iOS or Android application which will interact through the HTTP interface.
 
 Don't worry if it sounds abstract right now. We'll see the benefits later on when we're done.
 
@@ -63,7 +63,7 @@ We should be able to:
 - Update previously created todos
 - Delete todos
 
-That's basically it. The functionality which is describes here is often refered to as a [CRUD](/xx-terminologies/01-terminologies.md#crud) implementation which means "Create", "Read", "Update", "Delete".
+That's basically it. The functionality which is describes here is often refered to as a [CRUD](/xx-glossary/01-glossary.md#crud) implementation which means "Create", "Read", "Update", "Delete".
 
 Ok. Now that we've defined how our application will look like we want to start with our first part: The backend.
 
