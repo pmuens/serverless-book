@@ -689,6 +689,97 @@ to delete a todo. The `id` of the deleted todo item will de returned and display
 
 ## Adding CORS support
 
+We've successfully created our whole backend for our todo application. We are now able to create, read, update and delete todos with the help of HTTP calls! Next up we want to connect a frontend to our application so that we can manage our todos through a nice Web interface.
+
+If we look closely at the URL of the endpoint we get from our deployment we can see that our API is hosted at `amazonaws.com`. For security reasons our API is only accessible form within the same domain which means that we need to deploy and run our frontend from `amazonaws.com` as well. Otherwise our browser won't forward the requests from our frontend to our backend API.
+
+But there's a way to circumvent this. It's called [CORS](/xx-glossary/01-glossary.md#cors) ("Cross Origin Resource Sharing"). Enabling CORS for our API endpoints mean that we can access our API from wherever we want and don't need to serve our frontend from the same domain.
+
+> But how do we enable CORS?
+
+We could open up our API in the API Gateway service section of our AWS console and set it up by hand. Luckily Serverless has us covered as it enables us to setup CORS easily with the help of a setup in the `http` event definition.
+
+### String and object based event definition
+
+The `http` event definition we've used to wire up our Lambda function with a HTTP endpoint can be represented in two different ways. We've used the string representation which looks like this:
+
+```yml
+events:
+  - http: POST todos
+```
+
+It's the easiest and less verbose way to setup and configure a simple API endpoint.
+
+However Serverless also supports a more explicit, object based configuration which looks like this:
+
+```yml
+events:
+  - http:
+      method: POST
+      path: todos
+```
+
+Here we explicitly set the `method` and `path` attributes.
+
+It's important to note here that both representation will produce the same result / endpoint. The string representation is just some more "syntactic sugar" if you'd like to go with a simple setup.
+
+### Setting up CORS through Serverless
+
+We can simply setup CORS support by switching from the string configuration for the `http` event to an object representation where we add the `cors` attribute and set it to `true`.
+
+We need to do this for every `http` event definition.
+
+Here's how all our function definitions should look like once we've updated them:
+
+```yml
+functions:
+  create:
+    handler: handler.create
+    events:
+      - http:
+          method: POST
+          path: todos
+          cors: true
+  readAll:
+    handler: handler.readAll
+    events:
+      - http:
+          method: GET
+          path: todos
+          cors: true
+  readOne:
+    handler: handler.readOne
+    events:
+      - http:
+          method: GET
+          path: todos/{id}
+          cors: true
+  update:
+    handler: handler.update
+    events:
+      - http:
+          method: PUT
+          path: todos/{id}
+          cors: true
+  delete:
+    handler: handler.delete
+    events:
+      - http:
+          method: DELETE
+          path: todos/{id}
+          cors: true
+```
+
+Next up we need to re-deploy our service so that CORS is setup for all our endoints.
+
+Run
+
+```bash
+serverless deploy
+```
+
+to re-deploy the service. Great! Now CORS is setup and we can use our frontend to connect it with our backend!
+
 ## Adding a frontend
 
 ## What's next?
