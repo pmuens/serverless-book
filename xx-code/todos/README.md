@@ -1,6 +1,8 @@
 # Todos
 
-![Todos demo](todos-1.gif)
+<p align="center">
+  <img src="todos-1.gif?raw=true" alt="Todos demo"/>
+</p>
 
 This is the source code of the Serverless `Todos` service.
 
