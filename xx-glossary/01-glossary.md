@@ -12,6 +12,10 @@ Amazon Web Services. Amazons business which offers different cloud services (see
 
 Command-line interface. A way to interact with the computer through e.g. the console.
 
+## CORS
+
+Abbreviation for "Cross Origin Resource Sharing". Enabling CORS means that resources can be reused in different domains. This is e.g. used if the backend code is hosted on a different domain the the frontend code.
+
 ## CRUD
 
 Abbreviation for Create, Read, Update and Delete. The basic builidung blocks one needs when working with data.
