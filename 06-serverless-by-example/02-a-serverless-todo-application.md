@@ -45,6 +45,8 @@ Don't be intimidated if you've not worked with DynamoDB or other database system
 
 ## What we'll build
 
+![Todos demo](/xx-code/todos/todos-1.gif)
+
 Before we dive right into code we shoud sketch out briefly what we're about to build here and what the final application will look like.
 
 First of all we need to distinguish between the frontend (the stuff the user will see) and the backend (the business logic which is hidden from the user). We'll create both, but will focus on the backend part here as its the one which is powered by Serverless at the end of the day. Our Serverless backend application will act as an [API](/xx-terminologies/01-terminologies.md#api) you can talk to via [http](/xx-terminologies/01-terminologies.md#http). This makes it possible that you can switch out the frontend later on or develop an additional iOS or Android application which will interact through the HTTP interface.
