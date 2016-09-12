@@ -10,6 +10,24 @@ Let's start with our very first application!
 
 Our first application is a web application. We'll create a simple todo application in JavaScript / Node.js and deploy it to AWS. Excited and ready? Let's go!
 
+## Table of contents
+
+- [The code](#the-code)
+- [Aside: Data storage and DynamoDB](#aside-data-storage-and-dynamodb)
+- [What we'll build](#what-well-build)
+- [Creating a Serverless todos service](#creating-a-serverless-todos-service)
+- [Creating the DynamoDB todos table](#creating-the-dynamodb-todos-table)
+- [Creating the IAM role statements](#creating-the-iam-role-statements)
+- [Deploying the first time](#deploying-the-first-time)
+- [Creating a package.json file](#creating-a-packagejson-file)
+- [Creating todos](#creating-todos)
+- [Retrieving all todos](#retrieving-all-todos)
+- [Retrieving a single todo](#retrieving-a-single-todo)
+- [Updating todos](#updating-todos)
+- [Deleting todos](#deleting-todos)
+
+---
+
 ## The code
 
 The whole code we'll write is available in the [todo code directory](/xx-code/todos). Just open up this directory to follow along or read through it if you face any problems.
