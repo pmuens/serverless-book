@@ -695,7 +695,7 @@ If we look closely at the URL of the endpoint we get from our deployment we can 
 
 But there's a way to circumvent this. It's called [CORS](/xx-glossary/01-glossary.md#cors) ("Cross Origin Resource Sharing"). Enabling CORS for our API endpoints mean that we can access our API from wherever we want and don't need to serve our frontend from the same domain.
 
-> But how do we enable CORS?
+> "But how do we enable CORS?"
 
 We could open up our API in the API Gateway service section of our AWS console and set it up by hand. Luckily Serverless has us covered as it enables us to setup CORS easily with the help of a setup in the `http` event definition.
 
@@ -787,3 +787,16 @@ Let's connect a frontend with our backend so that we can manage our todos with o
 This book focuses on Serverless so we won't go into implementation details of frontend code here. However you can read through the whole code in the [frontend code directory](/xx-code/todos/frontend). You'll also find setup information on how to use and run those frontends.
 
 ## What's next?
+
+Congratulations! You've created your very first Serverless application which enables you a way to manage your todos!
+
+You might think
+
+> "So what should I do next?"
+
+Here are some ideas how you might extend the `todo` application so that you get more familiar with the code and Serverless itself:
+
+- Add an `isDone` attribute and implement a way to mark todos as done (you might also want to update the frontend code!)
+- Deploy your whole application with the help of S3 (as a static page)
+- Add due dates to your todos
+- Add project support for your todos
