@@ -306,16 +306,16 @@ Add the following code nested inside of the `functions` definition (on the same 
 
 ```yml
 readAll:
-  handler: handler.getAll
+  handler: handler.readAll
   events:
     - http: GET todos
 ```
 
 Let's take a look what this definition means.
 
-We've defined a new function definition with the name `readAll`. This function points to the exported `getAll` method which can be found in the `handler.js` file (`handler: handler.getAll`). A `http` event is added so that we can trigger the Lambda function by issuing a `GET` request against the `todos` path.
+We've defined a new function definition with the name `readAll`. This function points to the exported `readAll` method which can be found in the `handler.js` file (`handler: handler.readAll`). A `http` event is added so that we can trigger the Lambda function by issuing a `GET` request against the `todos` path.
 
-### 2. Implementing the `getAll` logic
+### 2. Implementing the `readAll` logic
 
 Let's implement the `getAll` logic for our Lambda function which will read all the todos from our DynamoDB and returns them.
 
@@ -387,3 +387,106 @@ curl <your-endpoint-url>
 ```
 
 Now you should see all the todos you've already created! :tada:
+
+## Retrieving a single todo
+
+We've just added a way to retrieve all our todos. But what if we want to retrieve a single todo item?
+
+We could implement a way where we'll retrieve all todo items at first and then filter out the item we'd like to get. But that's a very inefficient practice. It's even more inefficient when the amount of todo items increases.
+
+Let's add a new logic so that we can retrieve a single todo item with the help of the `id` attribute we'll always add when creating the todo beforehand.
+
+### Updating the `serverless.yml` file
+
+At first we should add a new function definition to our `serverless.yml` file. We already have a `readAll` function so we add a new function definition with the name `readOne`. This definition should be nested inside of the `functions` section:
+
+```yml
+readOne:
+  handler: handler.readOne
+  events:
+    - http: GET todos/{id}
+```
+
+This code is quite similar to the other code we've already added previously. However the `http` event introduces a new feature which is slightly different. Let's take a look at the different parts in detail.
+
+We create a new function which goes by the name `readOne`. Next up we tell Serverless that the logic can be found in the `handler.js` file where we export the `readOne` function. At the end we tell Serverless that we want to access our Lambda function through an HTTP API. A `GET` request against the `todos/{id}` path should return the corresponding todo item.
+
+The path definition here might look a little bit odd. But it's quite easy to understand what's going on here. We simply say that our path contains a variable with the name `id`. So `todos/1` for example would mean that we want to access the todo item with the `id` 1. This `id` variable is accessible in the `event` property we'll soon use when we implement our `readOne` logic.
+
+### Implementing the `readOne` logic
+
+Let's implement the logic which will read the todo item out of the database with the help of the `id` attribute.
+
+Create a new file called `todos-read-one.js` in the root of the service and add the following code:
+
+```javascript
+'use strict';
+
+const AWS = require('aws-sdk');
+const dynamoDb = new AWS.DynamoDB.DocumentClient();
+
+module.exports = (event, callback) => {
+  const params = {
+    TableName: 'todos',
+    Key: {
+      id: event.path.id
+    }
+  };
+
+  return dynamoDb.get(params, (error, data) => {
+    if (error) {
+      callback(error);
+    } else {
+      callback(error, data.Item);
+    }
+  });
+};
+```
+
+This code is quite similar to the code of the `readAll` function logic. We import the `aws-sdk` and create a new DynamoDB instance. Next up we export a function which will perform a `get` operation. This get operation will search in our `todos` table for specific todo we want to retrieve based in the `id` attribute.
+
+We can access the `id` attribute form the URL because it lives in the `event` property Lambda automatically gives us access to.
+
+After that we return the todo item. An error is returned if something went wrong.
+
+### 3. Updating the `handler.js` file
+
+The last step is to update the `handler.js` file so that Lambda knows where it can access the `readOne` function.
+
+At first import the `readOne` function at the top of the `handler.js` file:
+
+```javascript
+const todosReadOne = require('./todos-read-one.js');
+```
+
+Next up add the export statement for the `readOne` function at the bottom of the file:
+
+```javascript
+module.exports.readOne = (event, context, callback) => {
+  todosReadOne(event, (error, response) => {
+    context.done(error, response);
+  });
+};
+```
+
+### Deploying a retrieving a todo
+
+Run
+
+```bash
+serverless deploy
+```
+
+in the root of the service to deploy the recently added functionality.
+
+You should see the new `GET` endpoint in the terminal after the deployment succeeds.
+
+Copy this URL and replace `{id}` with a corresponding value of a todo you've created recently (you might use copy over an `id` from the output of the `readAll` `curl` call).
+
+Run
+
+```bash
+curl <your-endpoint-url>
+```
+
+and you should see the single todo item printed out on the screen! :dancers:
