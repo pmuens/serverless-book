@@ -490,3 +490,101 @@ curl <your-endpoint-url>
 ```
 
 and you should see the single todo item printed out on the screen! :dancers:
+
+## Updating todos
+
+Creating and retrieving todos is great but what if we introduce a typo or want to change our todo a little bit? It's time to add an update functionality!
+
+### 1. Updating the `serverless.yml` file
+
+At first we need to tell Serverless that we want to add a new Lambda function which will handle the update process for us. We do this by adding the following code which should be nested inside of the `functions` definition in the `serverless.yml` file:
+
+```yml
+update:
+  handler: handler.update
+  events:
+    - http: PUT todos/{id}
+```
+
+Here we say that an `update` function should be added. The corresponding code is accessible in the `handler.js` file and is exported with the name `update`.
+
+The `http` event definition makes it possible to update the todo item with the `PUT` method at the `todos/{id}` path.
+
+### 2. Implementing the `update` logic
+
+Let's implement the actual logic which will update the todo item in our database.
+
+Create a file called `todos-create.js` in the root of the directory and add the following code:
+
+```javascript
+'use strict';
+
+const AWS = require('aws-sdk');
+const dynamoDb = new AWS.DynamoDB.DocumentClient();
+
+module.exports = (event, callback) => {
+  const data = event.body;
+
+  data.id = event.path.id;
+  data.updatedAt = new Date().getTime();
+
+  const params = {
+    TableName : 'todos',
+    Item: data
+  };
+
+  return dynamoDb.put(params, (error, data) => {
+    if (error) {
+      callback(error);
+    } else {
+      callback(error, params.Item);
+    }
+  });
+};
+```
+
+As usual we import the `aws-sdk` and create a new DynamoDB instance. After that we export a function which receives the `event` and `callback` arguments from the Lambda function. We extract the new `body` and the `id` of the todo item with the help of the `event` property (the `id` is the `id` we'll embde inside of the URL like we've already done when implementing the `readOne` functionality). We also update the timestamp of the `updatedAt` attribute with the current time.
+
+A `put` request is issued against our DynamoDB which will overwrite the existing todo entry in our database.
+
+We'll return the new todo item or return an error if something unexpected happend.
+
+### 3. Updating the `handler.js` file
+
+The last thing we need to do is to update the `handler.js` file so that it points to our `update` logic.
+
+At first we need to import the `update` functionality by adding the following code to the top of the `handler.js` file:
+
+```javascript
+const todosUpdate = require('./todos-update.js');
+```
+
+Next up we add the `export` definition at the bottom of the file which will use the `update` logic and makes it accessible in our Lambda function:
+
+```javascript
+module.exports.update = (event, context, callback) => {
+  todosUpdate(event, (error, response) => {
+    context.done(error, response);
+  });
+};
+```
+
+### Deploying and updating a todo
+
+Let's test our update function!
+
+At first run
+
+```
+serverless deploy
+```
+
+to re-deploy the service. You should see a new `PUT` endpoint in the terminal once the deployment finishes.
+
+Copy this URL, replace the `{id}` with a valid todo `id` and run he following command in your terminal:
+
+```bash
+curl -H "Content-Type: application/json" -X PUT -d '{ "body" : "Updated todo" }' <your-endpoint-url>
+```
+
+Awesome! You've successfully updated a todo item! :tada:
