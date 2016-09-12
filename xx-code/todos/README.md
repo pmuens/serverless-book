@@ -1,5 +1,7 @@
 # Todos
 
+![Todos demo](todos-1.gif)
+
 This is the source code of the Serverless `Todos` service.
 
 You'll find two directories here.
