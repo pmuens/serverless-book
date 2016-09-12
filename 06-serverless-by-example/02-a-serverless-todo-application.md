@@ -588,3 +588,20 @@ curl -H "Content-Type: application/json" -X PUT -d '{ "body" : "Updated todo" }'
 ```
 
 Awesome! You've successfully updated a todo item! :tada:
+
+## Deleting todos
+
+The final functionality we would like to add is the possibility to delete todo items. Let's implement this to finish our first Serverless service!
+
+### 1. Updating the `servereless.yml` file
+
+Let's add the `delete` function definition to the `serverless.yml` file by nesting it inside of the `functions` definition:
+
+```yml
+delete:
+  handler: handlers.delete
+  events:
+    - http: DELETE todos/{id}
+```
+
+Here we define that Serverless should create a new Lambda function with the name `delete`. The `delete` function logic is exported in the `handler.js` file. Furthermore the `http` event adds an endpoint. The delete Lambda function is triggered when we access the `todos/{id}` path with the `DELETE` method.
