@@ -17,25 +17,40 @@ provider:
 
 functions:
   create:
-    handler: handlers.create
+    handler: handler.create
     events:
-      - http: POST todos/create
+      - http:
+          method: POST
+          path: todos
+          cors: true
   readAll:
-    handler: handlers.readAll
+    handler: handler.readAll
     events:
-      - http: GET todos
+      - http:
+          method: GET
+          path: todos
+          cors: true
   readOne:
-    handler: handlers.readOne
+    handler: handler.readOne
     events:
-      - http: GET todos/{id}
+      - http:
+          method: GET
+          path: todos/{id}
+          cors: true
   update:
-    handler: handlers.update
+    handler: handler.update
     events:
-      - http: PUT todos/{id}
+      - http:
+          method: PUT
+          path: todos/{id}
+          cors: true
   delete:
-    handler: handlers.delete
+    handler: handler.delete
     events:
-      - http: DELETE todos/{id}
+      - http:
+          method: DELETE
+          path: todos/{id}
+          cors: true
 
 resources:
   Resources:
