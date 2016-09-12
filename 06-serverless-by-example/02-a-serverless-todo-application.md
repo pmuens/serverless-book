@@ -25,6 +25,9 @@ Our first application is a web application. We'll create a simple todo applicati
 - [Retrieving a single todo](#retrieving-a-single-todo)
 - [Updating todos](#updating-todos)
 - [Deleting todos](#deleting-todos)
+- [Adding CORS support](#adding-cors-support)
+- [Adding a frontend](#adding-a-frontend)
+- [What's next?](#whats-next)
 
 ---
 
@@ -679,3 +682,9 @@ curl -X DELETE <your-endpoint-url>
 ```
 
 to delete a todo. The `id` of the deleted todo item will de returned and displayed on the terminal.
+
+## Adding CORS support
+
+## Adding a frontend
+
+## What's next?
