@@ -191,7 +191,7 @@ Here we'll tell Serverelss that we want to create a new function called `create`
 
 Our function will have one event definition it responds to (`http`). Serverelss will create a new API Gateway endpoint which will react on `POST` requests which are sent to the `/todos` path.
 
-### 2. Addin the create logic
+### 2. Implementing the `create` logic
 
 Next up we need to add the logic which will insert our new todo into the database. Create a new file called `todos-create.js` in the root of the service with the following content:
 
@@ -275,3 +275,97 @@ curl -H "Content-Type: application/json" -X POST -d '{ "body" : "My first todo" 
 The response will be the newly added todo!
 
 Awesome! :dancers: You've just created your first todo with the help of your new Serverless todos service! :tada:
+
+## Retrieving all todos
+
+Now that we have a way to create and store new todos we also want a way to retrieve them. Let's extend our codebase so that we can retrieve all todos available in the database.
+
+### 1. Updating the `serverless.yml` file
+
+Let's add the `readAll` function definition to our `serverless.yml` file so that Serverless knows that we want to use a new Lambda function whichs purpose is to return all the available todos from our DynamoDB database. Furthermore we'll add the `http` event so that we can access our todos through our HTTP API.
+
+Add the following code nested inside of the `functions` definition (on the same level as our `create` function):
+
+```yml
+readAll:
+  handler: handler.getAll
+  events:
+    - http: GET todos
+```
+
+Let's take a look what this definition means.
+
+We've defined a new function definition with the name `readAll`. This function points to the exported `getAll` method which can be found in the `handler.js` file (`handler: handler.getAll`). A `http` event is added so that we can trigger the Lambda function by issuing a `GET` request against the `todos` path.
+
+### 2. Implementing the `getAll` logic
+
+Let's implement the `getAll` logic for our Lambda function which will read all the todos from our DynamoDB and returns them.
+
+Create a new file called `todos-read-all.js` in the root of the service directory and add the following code:
+
+```javascript
+'use strict';
+
+const AWS = require('aws-sdk');
+const dynamoDb = new AWS.DynamoDB.DocumentClient();
+
+module.exports = (event, callback) => {
+  const params = {
+    TableName: 'todos',
+  };
+
+  return dynamoDb.scan(params, (error, data) => {
+    if (error) {
+      callback(error);
+    } else {
+      callback(error, data.Items);
+    }
+  });
+};
+```
+
+This code is very simple. At first we require the `aws-sdk` package so that we can create a new DynamoDB instance we can use in our code. Next up we export a function which will retrieve the Lambda `event` and `callback` as arguments.
+
+We then do a `scan` operation against our DynamoDB which will return all the todos available in our database as an Array. We'll return this array with our todo objects in the callback if everything is fine. Otherwise we'll return an error.
+
+**Note:** The `scan` operation scans the whole DynamoDB table which is very inefficient in large scale production apps. You might want to consider the `query` operation in a real world scenario.
+
+### 3. Updating the `handler.js` file
+
+The last thing we need to do is to update the `handler.js` file so that it points to our recently created `readAll` implementation.
+
+First up we need to import our `readAll` function. Open up the `handler.js` file and add the following code at the top of the file:
+
+```javascript
+const todosReadAll = require('./todos-read-all.js');
+```
+
+Next up add the following code at the bottom of the file which will call the imported `readAll` function with the parameters the Lambda function receives:
+
+```javascript
+module.exports.readAll = (event, context, callback) => {
+  todosReadAll(event, (error, response) => {
+    context.done(error, response);
+  });
+};
+```
+
+That's everything we need to do to get our todos out of the database!
+
+### Deploying and retrieving all todos
+
+Let's test this functionality. Run
+
+```bash
+serverless deploy
+```
+
+to deploy the new code. You should see the new `GET` endpoint on your terminal once the service is successfully re-deployed.
+
+Copy the url and run the following command in your terminal:
+
+```bash
+curl <your-endpoint-url>
+```
+
+Now you should see all the todos you've already created! :tada:
