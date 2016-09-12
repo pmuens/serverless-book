@@ -9,6 +9,23 @@ You may have heard about the term ["Microservice"](https://en.wikipedia.org/wiki
 
 **Note:** We'll use Amazon Web Services (AWS) as the provider and Node.js / JavaScript as our language of choice. You can use whatever provider / language you want. Just make sure that you pick the correct template which reflects your provider / language choice.
 
+## Table of contents
+
+- [The code](#the-code)
+- [Creating a service](#creating-a-service)
+- [What is serverless.yml?](#what-is-serverlessyml)
+- [Deploying a service](#deploying-a-service)
+- [Invoking a function](#invoking-a-function)
+- [Updating the function code](#updating-the-function-code)
+- [Redeploying the service](#redeploying-the-service)
+- [Removing the service](#removing-the-service)
+
+---
+
+## The code
+
+The whole code we'll write is available in the ["first-service" code directory](/xx-code/first-service). Just open up this directory to follow along or read through it if you face any problems.
+
 ## Creating a service
 
 Let's create our first service which should run on [AWS](/xx-glossary/01-glossary.md#aws) and uses Node.js / JavaScript as the runtime.
@@ -25,7 +42,7 @@ serverless create --template aws-nodejs --path my-first-service
 
 That's it. We should see a success message that Serverless has successfully created our service scaffold in the `my-first-service` directory.
 
-## What is serverless.yml
+## What is `serverless.yml`?
 
 Let's look into the files Serverless has created for us.
 
