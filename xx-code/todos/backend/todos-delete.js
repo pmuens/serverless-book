@@ -11,7 +11,7 @@ module.exports = (event, callback) => {
     }
   };
 
-  return dynamoDb.delete(params, function (error, data) {
+  return dynamoDb.delete(params, (error, data) => {
     if (error) {
       callback(error);
     } else {
