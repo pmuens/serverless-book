@@ -190,7 +190,7 @@ npm install
 
 so that the packages are installed inside our service directory.
 
-You can add any npm package you'd like to use in your Lambda functions here. Servereless will consider those packages when it zips the service and uploads it to S3.
+You can add any npm package you'd like to use in your Lambda functions here. Serverless will consider those packages when it zips the service and uploads it to S3.
 
 ## Creating todos
 
@@ -200,9 +200,9 @@ We'll implement the create functionality in a 3 step process.
 
 ### 1. Updating the `serverless.yml` file
 
-The first thing we'll need to do is to add a new function definition for our `create` functionality in our `serverelss.yml` file.
+The first thing we'll need to do is to add a new function definition for our `create` functionality in our `serverless.yml` file.
 
-Open up the `serverelss.yml` file and add the following code to the `functions` section (You can remove the function definition Serverelss has automatically created for you):
+Open up the `serverless.yml` file and add the following code to the `functions` section (You can remove the function definition Serverless has automatically created for you):
 
 ```yml
 functions:
@@ -212,9 +212,9 @@ functions:
       - http: POST todos
 ```
 
-Here we'll tell Serverelss that we want to create a new function called `create`. The handler which is the kind of starting point for the function points to the exported `create` function of the `handler.js` file (`handler: handler.create`).
+Here we'll tell Serverless that we want to create a new function called `create`. The handler which is the kind of starting point for the function points to the exported `create` function of the `handler.js` file (`handler: handler.create`).
 
-Our function will have one event definition it responds to (`http`). Serverelss will create a new API Gateway endpoint which will react on `POST` requests which are sent to the `/todos` path.
+Our function will have one event definition it responds to (`http`). Serverless will create a new API Gateway endpoint which will react on `POST` requests which are sent to the `/todos` path.
 
 ### 2. Implementing the `create` logic
 
@@ -600,7 +600,7 @@ Awesome! You've successfully updated a todo item! :tada:
 
 The final functionality we would like to add is the possibility to delete todo items. Let's implement this to finish our first Serverless service!
 
-### 1. Updating the `servereless.yml` file
+### 1. Updating the `serverless.yml` file
 
 Let's add the `delete` function definition to the `serverless.yml` file by nesting it inside of the `functions` definition:
 
