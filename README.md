@@ -1,6 +1,6 @@
 # :zap: The Serverless Book
 
-A Book about the [serverless.com](http://serverless.com) framework that covers Serverless v1.
+A Book about the [Serverless Framework](http://serverless.com) that covers Serverless v1.
 
 ## Table of contents
 
