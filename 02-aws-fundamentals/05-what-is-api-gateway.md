@@ -31,6 +31,6 @@ API Gateway is Amazons answer to target those pain points. It makes it easy to v
 
 In Serverless you can use API Gateway to expose your Lambda functions to the outside through an accessible HTTP endpoint.
 
-However it's important to know that API Gateway and the corresponding `http` event are a served as a plugin you can use to extend your Serverless serice and make it more feature rich. They are not a core technology you'll always use. Serverless can work without API Gateway or the `http` event at tall.
+However it's important to know that API Gateway and the corresponding `http` event are a served as a plugin you can use to extend your Serverless service and make it more feature rich. They are not a core technology you'll always use. Serverless can work without API Gateway or the `http` event at all.
 
 We'll use API Gateway and the corresponding `http` event heavily throughout this book so it's good to have a basic understanding of the nuts and bolts of API Gateway.
