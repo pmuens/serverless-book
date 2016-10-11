@@ -170,8 +170,8 @@ Create a new file called `package.json` in the root of your servie with the foll
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "aws-sdk": "^2.5.5",
-    "uuid": "^2.0.2"
+    "aws-sdk": "^2.6.7",
+    "uuid": "^2.0.3"
   }
 }
 ```
@@ -228,7 +228,7 @@ const dynamoDb = new AWS.DynamoDB.DocumentClient();
 const uuid = require('uuid');
 
 module.exports = (event, callback) => {
-  const data = event.body;
+  const data = JSON.parse(event.body);
 
   data.id = uuid.v1();
   data.updatedAt = new Date().getTime();
@@ -238,12 +238,11 @@ module.exports = (event, callback) => {
     Item: data
   };
 
-  return dynamoDb.put(params, function (error, data) {
+  return dynamoDb.put(params, (error, data) => {
     if (error) {
       callback(error);
-    } else {
-      callback(error, params.Item);
     }
+    callback(error, params.Item);
   });
 };
 ```
@@ -271,8 +270,13 @@ Next up add an export `create` statement like this to wire up the handler with t
 
 ```javascript
 module.exports.create = (event, context, callback) => {
-  todosCreate(event, (error, response) => {
-    context.done(error, response);
+  todosCreate(event, (error, result) => {
+    const response = {
+      statusCode: 200,
+      body: JSON.stringify(result),
+    };
+
+    context.succeed(response);
   });
 };
 ```
@@ -342,9 +346,8 @@ module.exports = (event, callback) => {
   return dynamoDb.scan(params, (error, data) => {
     if (error) {
       callback(error);
-    } else {
-      callback(error, data.Items);
     }
+    callback(error, data.Items);
   });
 };
 ```
@@ -369,8 +372,13 @@ Next up add the following code at the bottom of the file which will call the imp
 
 ```javascript
 module.exports.readAll = (event, context, callback) => {
-  todosReadAll(event, (error, response) => {
-    context.done(error, response);
+  todosReadAll(event, (error, result) => {
+    const response = {
+      statusCode: 200,
+      body: JSON.stringify(result),
+    };
+
+    context.succeed(response);
   });
 };
 ```
@@ -436,16 +444,15 @@ module.exports = (event, callback) => {
   const params = {
     TableName: 'todos',
     Key: {
-      id: event.path.id
+      id: event.pathParameters.id
     }
   };
 
   return dynamoDb.get(params, (error, data) => {
     if (error) {
       callback(error);
-    } else {
-      callback(error, data.Item);
     }
+    callback(error, data.Item);
   });
 };
 ```
@@ -470,8 +477,13 @@ Next up add the export statement for the `readOne` function at the bottom of the
 
 ```javascript
 module.exports.readOne = (event, context, callback) => {
-  todosReadOne(event, (error, response) => {
-    context.done(error, response);
+  todosReadOne(event, (error, result) => {
+    const response = {
+      statusCode: 200,
+      body: JSON.stringify(result),
+    };
+
+    context.succeed(response);
   });
 };
 ```
@@ -530,9 +542,9 @@ const AWS = require('aws-sdk');
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
 module.exports = (event, callback) => {
-  const data = event.body;
+  const data = JSON.parse(event.body);
 
-  data.id = event.path.id;
+  data.id = event.pathParameters.id;
   data.updatedAt = new Date().getTime();
 
   const params = {
@@ -543,9 +555,8 @@ module.exports = (event, callback) => {
   return dynamoDb.put(params, (error, data) => {
     if (error) {
       callback(error);
-    } else {
-      callback(error, params.Item);
     }
+    callback(error, params.Item);
   });
 };
 ```
@@ -570,8 +581,13 @@ Next up we add the `export` definition at the bottom of the file which will use 
 
 ```javascript
 module.exports.update = (event, context, callback) => {
-  todosUpdate(event, (error, response) => {
-    context.done(error, response);
+  todosUpdate(event, (error, result) => {
+    const response = {
+      statusCode: 200,
+      body: JSON.stringify(result),
+    };
+
+    context.succeed(response);
   });
 };
 ```
@@ -627,16 +643,15 @@ module.exports = (event, callback) => {
   const params = {
     TableName : 'todos',
     Key: {
-      id: event.path.id
+      id: event.pathParameters.id
     }
   };
 
-  return dynamoDb.delete(params, function (error, data) {
+  return dynamoDb.delete(params, (error, data) => {
     if (error) {
       callback(error);
-    } else {
-      callback(error, params.Key);
     }
+    callback(error, params.Key);
   });
 };
 ```
@@ -657,8 +672,13 @@ and then add a new function export at the bottom of the `handler.js` file so tha
 
 ```javascript
 module.exports.delete = (event, context, callback) => {
-  todosDelete(event, (error, response) => {
-    context.done(error, response);
+  todosDelete(event, (error, result) => {
+    const response = {
+      statusCode: 200,
+      body: JSON.stringify(result),
+    };
+
+    context.succeed(response);
   });
 };
 ```
