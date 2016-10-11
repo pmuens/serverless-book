@@ -7,15 +7,14 @@ module.exports = (event, callback) => {
   const params = {
     TableName : 'todos',
     Key: {
-      id: event.path.id
+      id: event.pathParameters.id
     }
   };
 
   return dynamoDb.delete(params, (error, data) => {
     if (error) {
       callback(error);
-    } else {
-      callback(error, params.Key);
     }
+    callback(error, params.Key);
   });
 };
