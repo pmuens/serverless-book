@@ -124,6 +124,8 @@ Open up the `serverless.yml` file in your editor and update the `provider` secti
 provider:
   name: aws
   runtime: nodejs4.3
+  region: us-east-1
+  stage: dev
   iamRoleStatements:
     - Effect: Allow
       Action:
