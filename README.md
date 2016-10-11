@@ -22,8 +22,6 @@ A Book about the [Serverless Framework](http://serverless.com) that covers Serve
 - [Serverless by example](./06-serverless-by-example)
   - [Your first Serverless service](./06-serverless-by-example/01-your-first-serverless-service.md)
   - [A Serverless Todo application](./06-serverless-by-example/02-a-serverless-todo-application.md)
-  - Facebook Messenger Chatbot (*in progress*)
-  - Daily news via E-Mail (*in progress*)
 - [Code](./xx-code)
   - [First service](./xx-code/first-service)
   - [Todos](./xx-code/todos)
