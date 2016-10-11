@@ -7,15 +7,14 @@ module.exports = (event, callback) => {
   const params = {
     TableName: 'todos',
     Key: {
-      id: event.path.id
+      id: event.pathParameters.id
     }
   };
 
   return dynamoDb.get(params, (error, data) => {
     if (error) {
       callback(error);
-    } else {
-      callback(error, data.Item);
     }
+    callback(error, data.Item);
   });
 };
