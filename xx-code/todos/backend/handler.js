@@ -7,31 +7,56 @@ const todosUpdate = require('./todos-update.js');
 const todosDelete = require('./todos-delete.js');
 
 module.exports.create = (event, context, callback) => {
-  todosCreate(event, (error, response) => {
-    context.done(error, response);
+  todosCreate(event, (error, result) => {
+    const response = {
+      statusCode: 200,
+      body: JSON.stringify(result),
+    };
+
+    context.succeed(response);
   });
 };
 
 module.exports.readAll = (event, context, callback) => {
-  todosReadAll(event, (error, response) => {
-    context.done(error, response);
+  todosReadAll(event, (error, result) => {
+    const response = {
+      statusCode: 200,
+      body: JSON.stringify(result),
+    };
+
+    context.succeed(response);
   });
 };
 
 module.exports.readOne = (event, context, callback) => {
-  todosReadOne(event, (error, response) => {
-    context.done(error, response);
+  todosReadOne(event, (error, result) => {
+    const response = {
+      statusCode: 200,
+      body: JSON.stringify(result),
+    };
+
+    context.succeed(response);
   });
 };
 
 module.exports.update = (event, context, callback) => {
-  todosUpdate(event, (error, response) => {
-    context.done(error, response);
+  todosUpdate(event, (error, result) => {
+    const response = {
+      statusCode: 200,
+      body: JSON.stringify(result),
+    };
+
+    context.succeed(response);
   });
 };
 
 module.exports.delete = (event, context, callback) => {
-  todosDelete(event, (error, response) => {
-    context.done(error, response);
+  todosDelete(event, (error, result) => {
+    const response = {
+      statusCode: 200,
+      body: JSON.stringify(result),
+    };
+
+    context.succeed(response);
   });
 };
