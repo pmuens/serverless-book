@@ -1,14 +1,14 @@
 {
-  "name": "todos",
+  "name": "serverless-crud",
   "version": "0.1.0",
-  "description": "Todo service built with Serverless",
+  "description": "Serverless CRUD service",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "aws-sdk": "^2.5.5",
-    "uuid": "^2.0.2"
+    "aws-sdk": "^2.6.7",
+    "uuid": "^2.0.3"
   }
 }
