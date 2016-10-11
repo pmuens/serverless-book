@@ -4,9 +4,9 @@ const AWS = require('aws-sdk');
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
 module.exports = (event, callback) => {
-  const data = event.body;
+  const data = JSON.parse(event.body);
 
-  data.id = event.path.id;
+  data.id = event.pathParameters.id;
   data.updatedAt = new Date().getTime();
 
   const params = {
@@ -17,8 +17,7 @@ module.exports = (event, callback) => {
   return dynamoDb.put(params, (error, data) => {
     if (error) {
       callback(error);
-    } else {
-      callback(error, params.Item);
     }
+    callback(error, params.Item);
   });
 };
