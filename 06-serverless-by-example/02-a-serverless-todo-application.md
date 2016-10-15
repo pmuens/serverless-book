@@ -535,7 +535,7 @@ The `http` event definition makes it possible to update the todo item with the `
 
 Let's implement the actual logic which will update the todo item in our database.
 
-Create a file called `todos-create.js` in the root of the directory and add the following code:
+Create a file called `todos-update.js` in the root of the directory and add the following code:
 
 ```javascript
 'use strict';
