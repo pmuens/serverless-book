@@ -180,7 +180,7 @@ Create a new file called `package.json` in the root of your servie with the foll
 
 You can see that we've added two packages here.
 
-THe firs one is [`aws-sdk`](https://www.npmjs.com/package/aws-sdk) which gives us access to work with AWS services (this is not necessary as Lambda functions automatically have access to the SDKs in the corresponding runtime language).
+The first one is [`aws-sdk`](https://www.npmjs.com/package/aws-sdk) which gives us access to work with AWS services (this is not necessary as Lambda functions automatically have access to the SDKs in the corresponding runtime language).
 
 Additionally we've added the [`uuid`](https://www.npmjs.com/package/uuid) package which will help us generate unique ids we can use as our `id` attribute for our todos.
 
