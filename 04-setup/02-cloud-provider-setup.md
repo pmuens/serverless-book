@@ -30,7 +30,7 @@ Done. We've now created an *serverless-admin* user which can do stuff in our AWS
 
 Serverless needs access to the `AWS Access Key ID` and `AWS Secret Access Key` so that it can work with the previously created AWS user.
 
-At first you should download and isntall the AWS CLI. You can read how to do this [here](http://docs.aws.amazon.com/cli/latest/userguide/installing.html).
+At first you should download and install the AWS CLI. You can read how to do this [here](http://docs.aws.amazon.com/cli/latest/userguide/installing.html).
 
 After you've done this you need to run
 
