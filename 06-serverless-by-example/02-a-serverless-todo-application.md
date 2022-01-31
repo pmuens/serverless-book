@@ -624,7 +624,7 @@ Let's add the `delete` function definition to the `serverless.yml` file by nesti
 
 ```yml
 delete:
-  handler: handlers.delete
+  handler: handler.delete
   events:
     - http: DELETE todos/{id}
 ```
